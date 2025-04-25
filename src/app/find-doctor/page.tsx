@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { useSearchParams, useRouter } from 'next/navigation';
 import SearchBar from '@/components/SearchBar';
@@ -18,7 +18,7 @@ interface Doctor {
   photo?: string;
 }
 
-export default function FindDoctor() {
+function FindDoctorContent() {
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [filteredDoctors, setFilteredDoctors] = useState<Doctor[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -29,20 +29,26 @@ export default function FindDoctor() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  // First useEffect - Add searchParams to dependencies
   useEffect(() => {
     // Initialize state from URL params
     const search = searchParams.get('search') || '';
     const consultType = searchParams.get('consultType') || '';
     const specialties = searchParams.get('specialties')?.split(',').filter(Boolean) || [];
     const sort = searchParams.get('sort') || '';
-
+  
     setSearchTerm(search);
     setSelectedConsultType(consultType);
     setSelectedSpecialties(specialties);
     setSortBy(sort);
-
+  
     fetchDoctors();
-  }, []);
+  }, [searchParams]); // Add searchParams to dependency array
+  
+  // Second useEffect - Add applyFilters to dependencies
+  useEffect(() => {
+    applyFilters();
+  }, [searchTerm, selectedConsultType, selectedSpecialties, sortBy, doctors]); // Add relevant dependencies
 
   const fetchDoctors = async () => {
     try {
@@ -165,5 +171,13 @@ export default function FindDoctor() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function FindDoctor() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <FindDoctorContent />
+    </Suspense>
   );
 }

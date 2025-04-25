@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface Doctor {
   id: string;
@@ -26,10 +27,12 @@ export default function DoctorList({ doctors }: DoctorListProps) {
           className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
         >
           <div className="flex items-start gap-4">
-            {doctor.photo && (
-              <img 
-                src={doctor.photo} 
+            {doctor.photo && doctor.photo !== 'null' && (
+              <Image 
+                src={doctor.photo}
                 alt={doctor.name}
+                width={80}
+                height={80}
                 className="w-20 h-20 rounded-full object-cover"
               />
             )}
