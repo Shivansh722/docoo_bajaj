@@ -116,6 +116,20 @@ function FindDoctorContent() {
     applyFilters();
   }, [searchTerm, selectedConsultType, selectedSpecialties, sortBy]);
 
+  const handleRemoveFilter = (type: string, value?: string) => {
+    switch (type) {
+      case 'consultType':
+        setSelectedConsultType('');
+        break;
+      case 'specialty':
+        setSelectedSpecialties(selectedSpecialties.filter(s => s !== value));
+        break;
+      case 'sort':
+        setSortBy('');
+        break;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#EEF4FF]">
       {/* Header */}
@@ -190,7 +204,13 @@ function FindDoctorContent() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="md:col-span-3"
           >
-            <DoctorList doctors={filteredDoctors} />
+            <DoctorList 
+              doctors={filteredDoctors}
+              selectedConsultType={selectedConsultType}
+              selectedSpecialties={selectedSpecialties}
+              sortBy={sortBy}
+              onRemoveFilter={handleRemoveFilter}
+            />
           </motion.div>
         </div>
       </div>

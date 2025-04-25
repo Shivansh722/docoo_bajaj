@@ -26,6 +26,12 @@ export default function FilterPanel({
   sortBy,
   setSortBy
 }: FilterPanelProps) {
+  const handleClearAll = () => {
+    setSelectedConsultType('');
+    setSelectedSpecialties([]);
+    setSortBy('');
+  };
+
   const handleSpecialtyChange = (specialty: string) => {
     if (selectedSpecialties.includes(specialty)) {
       setSelectedSpecialties(selectedSpecialties.filter(s => s !== specialty));
@@ -41,6 +47,18 @@ export default function FilterPanel({
       transition={{ duration: 0.5 }}
       className="bg-white p-4 rounded-lg shadow"
     >
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-lg font-semibold text-gray-800">Filters</h2>
+        {(selectedConsultType || selectedSpecialties.length > 0 || sortBy) && (
+          <button
+            onClick={handleClearAll}
+            className="text-blue-600 hover:text-blue-800 text-sm transition-colors"
+          >
+            Clear All
+          </button>
+        )}
+      </div>
+
       {/* Consultation Mode */}
       <div className="mb-6">
         <h3 data-testid="filter-header-moc" className="font-semibold mb-3 text-gray-800">
