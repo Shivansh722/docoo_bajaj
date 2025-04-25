@@ -38,7 +38,7 @@ export default function SearchBar({ searchTerm, setSearchTerm, doctors }: Search
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search doctors by name..."
-        className="w-full p-4 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        className="w-full p-4 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 placeholder-gray-500"
       />
       {showSuggestions && suggestions.length > 0 && (
         <div className="absolute w-full bg-white border rounded-lg mt-1 shadow-lg z-10">
@@ -46,7 +46,7 @@ export default function SearchBar({ searchTerm, setSearchTerm, doctors }: Search
             <div
               key={doctor.id}
               data-testid="suggestion-item"
-              className="p-3 hover:bg-gray-100 cursor-pointer"
+              className="p-3 hover:bg-gray-100 cursor-pointer text-gray-800"
               onClick={() => {
                 setSearchTerm(doctor.name);
                 setShowSuggestions(false);

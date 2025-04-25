@@ -126,6 +126,30 @@ function FindDoctorContent() {
         className="bg-white shadow-sm"
       >
         <div className="container mx-auto px-4 py-6">
+          <div className="flex items-center mb-4">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => router.push('/')}
+              className="flex items-center text-[#1A237E] hover:text-blue-700 transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                className="w-6 h-6 mr-2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+                />
+              </svg>
+              Back to Home
+            </motion.button>
+          </div>
           <h1 className="text-3xl font-bold text-[#1A237E]">Find Doctors Near You</h1>
           <p className="text-gray-600 mt-2">380360 Internists across 54 states and territories</p>
           

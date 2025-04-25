@@ -43,27 +43,27 @@ export default function FilterPanel({
     >
       {/* Consultation Mode */}
       <div className="mb-6">
-        <h3 data-testid="filter-header-moc" className="font-semibold mb-3">
+        <h3 data-testid="filter-header-moc" className="font-semibold mb-3 text-gray-800">
           Consultation Mode
         </h3>
         <div className="space-y-2">
-          <label className="flex items-center">
+          <label className="flex items-center text-gray-800 cursor-pointer">
             <input
               type="radio"
               data-testid="filter-video-consult"
               checked={selectedConsultType === 'video'}
               onChange={() => setSelectedConsultType('video')}
-              className="mr-2"
+              className="mr-2 h-4 w-4 accent-gray-800 border-gray-800"
             />
             Video Consult
           </label>
-          <label className="flex items-center">
+          <label className="flex items-center text-gray-800 cursor-pointer">
             <input
               type="radio"
               data-testid="filter-in-clinic"
               checked={selectedConsultType === 'clinic'}
               onChange={() => setSelectedConsultType('clinic')}
-              className="mr-2"
+              className="mr-2 h-4 w-4 accent-gray-800 border-gray-800"
             />
             In Clinic
           </label>
@@ -72,18 +72,18 @@ export default function FilterPanel({
 
       {/* Specialties */}
       <div className="mb-6">
-        <h3 data-testid="filter-header-speciality" className="font-semibold mb-3">
+        <h3 data-testid="filter-header-speciality" className="font-semibold mb-3 text-gray-800">
           Speciality
         </h3>
         <div className="space-y-2 max-h-96 overflow-y-auto">
           {specialties.map(specialty => (
-            <label key={specialty} className="flex items-center">
+            <label key={specialty} className="flex items-center text-gray-800 cursor-pointer">
               <input
                 type="checkbox"
                 data-testid={`filter-specialty-${specialty.replace('/', '-')}`}
                 checked={selectedSpecialties.includes(specialty)}
                 onChange={() => handleSpecialtyChange(specialty)}
-                className="mr-2"
+                className="mr-2 h-4 w-4 accent-gray-800 border-gray-800"
               />
               {specialty}
             </label>
@@ -93,27 +93,27 @@ export default function FilterPanel({
 
       {/* Sort Options */}
       <div>
-        <h3 data-testid="filter-header-sort" className="font-semibold mb-3">
+        <h3 data-testid="filter-header-sort" className="font-semibold mb-3 text-gray-800">
           Sort By
         </h3>
         <div className="space-y-2">
-          <label className="flex items-center">
+          <label className="flex items-center text-gray-800 cursor-pointer">
             <input
               type="radio"
               data-testid="sort-fees"
               checked={sortBy === 'fees'}
               onChange={() => setSortBy('fees')}
-              className="mr-2"
+              className="mr-2 h-4 w-4 accent-gray-800 border-gray-800"
             />
             Fees (Low to High)
           </label>
-          <label className="flex items-center">
+          <label className="flex items-center text-gray-800 cursor-pointer">
             <input
               type="radio"
               data-testid="sort-experience"
               checked={sortBy === 'experience'}
               onChange={() => setSortBy('experience')}
-              className="mr-2"
+              className="mr-2 h-4 w-4 accent-gray-800 border-gray-800"
             />
             Experience (High to Low)
           </label>

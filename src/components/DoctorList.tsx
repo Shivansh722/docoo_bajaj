@@ -45,20 +45,20 @@ export default function DoctorList({ doctors }: DoctorListProps) {
               </h2>
               <p 
                 data-testid="doctor-specialty" 
-                className="text-gray-600 mt-2"
+                className="text-gray-800 mt-2"
               >
                 {doctor.specialities.map(s => s.name).join(', ')}
               </p>
               <div className="mt-4 flex justify-between items-center">
                 <span 
                   data-testid="doctor-experience" 
-                  className="text-gray-700"
+                  className="text-gray-800"
                 >
                   {doctor.experience}
                 </span>
                 <span 
                   data-testid="doctor-fee" 
-                  className="text-primary font-semibold"
+                  className="text-gray-800 font-semibold"
                 >
                   {doctor.fees}
                 </span>
