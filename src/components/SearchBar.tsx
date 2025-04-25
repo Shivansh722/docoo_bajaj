@@ -32,14 +32,20 @@ export default function SearchBar({ searchTerm, setSearchTerm, doctors }: Search
 
   return (
     <div className="relative">
-      <input
-        data-testid="autocomplete-input"
-        type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="Search doctors by name..."
-        className="w-full p-4 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 placeholder-gray-500"
-      />
+      <div className="relative">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search doctor name"
+          className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-100 focus:border-blue-300 transition-all text-gray-800"
+        />
+        <div className="absolute left-4 top-1/2 -translate-y-1/2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-gray-400">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+          </svg>
+        </div>
+      </div>
       {showSuggestions && suggestions.length > 0 && (
         <div className="absolute w-full bg-white border rounded-lg mt-1 shadow-lg z-10">
           {suggestions.map(doctor => (

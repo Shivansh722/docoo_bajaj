@@ -17,28 +17,6 @@ export default function Home() {
         >
           <h1 className="text-2xl font-bold text-[#1A237E]">DocSyne</h1>
         </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="hidden md:flex space-x-8"
-        >
-          <Link href="/" className="text-gray-700 hover:text-[#1A237E]">Home</Link>
-          <Link href="/find-doctor" className="text-gray-700 hover:text-[#1A237E]">Find Doctor</Link>
-          <Link href="/services" className="text-gray-700 hover:text-[#1A237E]">Our Services</Link>
-          <Link href="/about" className="text-gray-700 hover:text-[#1A237E]">About Us</Link>
-          <Link href="/contact" className="text-gray-700 hover:text-[#1A237E]">Contact</Link>
-        </motion.div>
-
-        <motion.button
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-[#1A237E] text-white px-6 py-2 rounded-full hover:bg-[#283593] transition-colors"
-        >
-          Get Started
-        </motion.button>
       </nav>
 
       {/* Hero Section */}
@@ -59,15 +37,10 @@ export default function Home() {
           <div className="flex space-x-4">
             <motion.button
               whileHover={{ scale: 1.05 }}
+              onClick={() => window.location.href = '/find-doctor'}
               className="bg-blue-500 text-white px-8 py-3 rounded-full"
             >
-              Book an Appointment
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className="text-blue-500 px-8 py-3 rounded-full border border-blue-500"
-            >
-              Our Services →
+              Find Doctor
             </motion.button>
           </div>
 
@@ -109,15 +82,7 @@ export default function Home() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="relative"
         >
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="bg-white p-4 rounded-lg absolute top-20 -left-10 shadow-lg z-10"
-          >
-            Expert in<br />
-            Surgical care
-          </motion.div>
+          
           <Image
             src="/doctor.png"
             alt="Doctor"
